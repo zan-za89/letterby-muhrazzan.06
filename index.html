@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories Board & Feedback ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Permanent+Marker&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cork: #b88655;
+            --pink-accent: #ff85a2;
+            --blue-accent: #4895ef;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--cork);
+            background-image: url('https://www.transparenttextures.com/patterns/cork-board.png');
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Container Papan */
+        .board {
+            position: relative;
+            width: 95vw;
+            height: 90vh;
+            max-width: 1200px;
+        }
+
+        /* Judul Gaya Scrapbook */
+        .board-title {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3.5rem;
+            background: #fff;
+            padding: 5px 30px;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        /* Polaroid Bertumpuk */
+        .polaroid {
+            position: absolute;
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid #ddd;
+            transition: 0.3s;
+            z-index: 1;
+        }
+
+        .polaroid img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            z-index: 100 !important;
+        }
+
+        /* Sticky Note Tengah untuk Akses */
+        .sticky-note {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(3deg);
+            background: #fffeb3;
+            width: 280px;
+            padding: 30px;
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            z-index: 50;
+            border-bottom-right-radius: 60px 5px;
+        }
+
+        .sticky-note input {
+            width: 80%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 2px dashed #ff85a2;
+            text-align: center;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-open { background: var(--pink-accent); color: white; }
+
+        /* MODAL PESAN & FEEDBACK */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            padding: 40px;
+            border-radius: 30px;
+            z-index: 200;
+            text-align: center;
+            box-shadow: 0 0 100px rgba(0,0,0,0.6);
+            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes pop {
+            from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .theme-cewe { background: #fff0f3; border: 5px solid #ffb3c1; color: #ff4d6d; }
+        .theme-cwo { background: #eefbff; border: 5px solid #bde0fe; color: #4895ef; }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-family: inherit;
+        }
+
+        .btn-send { background: #333; color: white; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="board">
+        <div class="board-title">THIS IS A LETTER<bR>TO YOU!!!</div>
+
+        <div class="polaroid" style="top: 10%; left: 10%; transform: rotate(-10deg);">
+            <img src="asset/image.png" alt="img">
+        </div>
+        <div class="polaroid" style="top: 15%; right: 15%; transform: rotate(15deg);">
+            <img src="asset/WhatsApp Image 2026-02-16 at 07.41.38.jpeg" alt="img">
+        </div>
+        <div class="polaroid" style="bottom: 10%; left: 5%; transform: rotate(8deg);">
+            <img src="asset/WhatsApp Image 2026-02-16 at 11.31.27.jpeg" alt="img">
+        </div>
+        <div class="polaroid" style="bottom: 15%; right: 5%; transform: rotate(-12deg);">
+            <img src="asset/WhatsApp Image 2026-02-17 at 12.07.23.jpeg" alt="img">
+        </div>
+         <div class="polaroid" style="top: 10%; left: 10%; transform: rotate(-10deg);">
+            <img src="asset/image.png" alt="img">
+        </div>
+<div class="polaroid" style="top: 40%; left: 2%; transform: rotate(-7deg); z-index: 4;">
+    <img src="asset/WhatsApp Image 2026-02-17 at 19.20.43 (1).jpeg" alt="img">
+</div>
+
+<div class="polaroid" style="top: 35%; right: 2%; transform: rotate(10deg); z-index: 3;">
+    <img src="asset/WhatsApp Image 2026-02-17 at 19.33.08.jpeg" alt="img">
+</div>
+
+<div class="polaroid" style="bottom: 5%; left: 30%; transform: rotate(-5deg); z-index: 5;">
+    <img src="asset/WhatsApp Image 2026-02-17 at 19.33.07.jpeg" alt="img">
+</div>
+
+<div class="polaroid" style="bottom: 8%; right: 25%; transform: rotate(12deg); z-index: 1;">
+    <img src="asset/WhatsApp Image 2026-02-17 at 19.33.03.jpeg" alt="img">
+</div>
+
+        <div class="sticky-note">
+            <h2 style="font-family: 'Gochi Hand';">Open Your Letter 🔑</h2>
+            <input type="text" id="passInput" placeholder="Ketik kodemu...">
+            <button class="btn-open" onclick="openNote()">Buka ✨</button>
+        </div>
+    </div>
+
+    <div id="messageModal" class="modal">
+        <h1 id="emojiBox">🌸</h1>
+        <h2 id="nameBox">Halo!</h2>
+        <p id="messageContent" style="font-size: 0.9rem; line-height: 1.6;"></p>
+        
+        <hr style="border: 1px dashed #ccc; margin: 20px 0;">
+        
+        <p style="font-size: 0.8rem; font-weight: bold;">Mau Bilang sesuatu ngga?:</p>
+        <textarea id="feedbackInput" placeholder="Tulis balasanmu di sini..."></textarea>
+        <button class="btn-send" onclick="sendFeedback()">Kirim Balas Balik 💌</button>
+        <br><br>
+        <button onclick="closeNote()" style="background: none; color: #888;">Tutup</button>
+    </div>
+
+    <script>
+        const users = {
+            "mesyy": { gender: "cewe", emoji: "🤑🤑🤑", name: "Dear Mesy", msg: "hbdd ibu kadepp!!!semogaa tercapai semua yang ingin dicapai yaaa, BTW semangat jalanin amanah sebagai kadep, anak-anaknya jangan lupa diperhatikan lagi yaaa. Good Luck MESSS(GWS juga yaaa!!)" },
+            "medi": { gender: "cewe", emoji: "🤑🤑", name: "Dear Medi", msg: "haii bu wakadepp!!! semangat jalanin amanah sebagai wakadep yaa, anak-anaknya jangan lupa dibounding lagi yaa. semangatt 1 periode nyaa, good luck" },
+            "ali": { gender: "cwo", emoji: "🤑", name: "Haii Alii", msg: "semangat yaaa digsm, kalau ada kendala bilang yaaa kekami, kakak/abang dan teman-temannya dibantu yaaa!!!jangan biarkan kamu, teman-teman, atau kakak abangnya sendiri!! GWS yaa alii, ditunggu hasil prokernya, good luck!!!" },
+            "raihan": { gender: "cwo", emoji: "🤑", name: "Haii raihan", msg: "semangat yaaa digsm, kalau ada kendala bilang yaaa kekami, kakak/abang dan teman-temannya dibantu yaaa!!!jangan biarkan kamu, teman-teman, atau kakak abangnya sendiri!!Btw ditunggu hasil prokernya!!!" },
+            "yolan": { gender: "cewe", emoji: "🤑", name: "Dear Yolan", msg: "haii yolan!!! Thank you yaa udah tag aku di SG wkwkwk!!! Btw semangat yaa jadi pengmud semoga betah dikeluarga gsm khususnya ekoven!!!!btw kakak/abang, dan teman-temannya dibantu yaaa, jangan biarkan sendirii!!!Good Luck Yolan ditunggu yaa ngumpul barengnya!!!" },
+            "jes": { gender: "cewe", emoji: "🤑", name: "Dear Jes", msg: "haii jes!!!semangat yaa jadi pengmud semoga betah dikeluarga gsm khususnya ekovem!!!!btw kakak/abang, dan teman-temannya dibantu yaaa, jangan biarkan sendirii!!!Good Luck Jes, safe flight yaa besokk!!!" },
+            "amel": { gender: "cewe", emoji: "🤑", name: "Dear Amel", msg: "haii amel baiq!!! semangat yaa jadi pengmud semoga betah dikeluarga gsm khusunya ekoven!!!!btw kakak/abang, dan teman-temannya dibantu yaaa, jangan biarkan sendirii!!!Good Luck Amel" },
+            "Sagita": { gender: "cewe", emoji: "🤑", name: "Dear Sagita", msg: "haii sagita!!! semangat yaa jadi pengmud semoga betah dikeluarga gsm khususnya ekoven!!!!btw kakak/abang, dan teman-temannya dibantu yaaa, jangan biarkan sendirii!!!Good Luck Sagita" },
+            "rizky": { gender: "cwo", emoji: "🤑", name: "Haii Rizky", msg: "semangat yaaa digsm, kalau ada kendala bilang yaaa kekami, kakak/abang dan teman-temannya dibantu yaaa!!!jangan biarkan kamu, teman-teman, atau kakak abangnya sendiri!!Btw kapan nihh jogging!!!good luck yaaa!!!aktif digrup juga yaa!!" },
+            "Bryan": { gender: "cwo", emoji: "🐨🐨🐨🐨", name: "Haii Bryan", msg: "semangat yaaa digsm, btww terimakasih udah jadi teman regu yang baik,keren, dan seterusnya. maaf  juga yaa kita belum bisa dapat nominasi!!! tapi nominasi dihati aku kalian all in sihh!!! selamat beristirahat yaaa!!!semangat kanguruuu!!!eh koalaaaa maksudnya!!Good luck Keluarga!!" },
+            "Dezalia": { gender: "cewe", emoji: "🐨🐨🐨🐨", name: "Dear Dezalia", msg: "haii dewan kecill, btww terimakasih udah jadi teman regu yang baik,keren, dan seterusnya. maaf  juga yaa kita belum bisa dapat nominasi!!! tapi nominasi dihati aku kalian all in sihh!!! selamat beristirahat yaaa!!!semangatt jadi aslabnyaa!!!Good luck dewan!!!" },
+            "Bulan": { gender: "cewe", emoji: "🐨🐨🐨🐨", name: "Dear Bulan", msg: "haloo bu wakadep, btww terimakasih udah jadi teman regu yang baik,keren, dan seterusnya. maaf  juga yaa kita belum bisa dapat nominasi!!!selamat beristirahat yaaa!!!semangatt jadi aslabnyaa, semangat juga amanah jadi wakadepnya!!!good luck!!!" },
+            "naila": { gender: "cewe", emoji: "🐨🐨🐨🐨", name: "Dear Naila", msg: "haii nailaa, btww terimakasih udah jadi teman regu yang baik,keren, dan seterusnya. maaf  juga yaa kita belum bisa dapat nominasi!!!selamat beristirahat yaaa!!!kapan nihh kitaa sholawatan!!btww good luck yaa keluarga" },
+            "Dwi": { gender: "cewe", emoji: "🐨🐨🐨🐨", name: "Dear Zaskiah", msg: "haloo zass, GWS yaaa!!!jangan lupa minum obat, semangat yaaa digsm!!!" },
+            "ekoven": { gender: "cwo", emoji: "🤑🤑🤑🤑🤑🤑", name: "Dear Staff ekoven", msg: "Haii semuanyaaaa!!! kalau  kamu baca ini aku cuman mau bilang terimakasih buat kadep, wakadep, dan staff ahli ekoven yaaa, buat kalian jangan lupa adik-adiknya dibimbing bukan sebagai rekan kerja, tapi sebagai keluarga tempat mereka pulang dan berkeluh kesah. begitujuga buat kaliann yaa!!! jadiin ekoven sebagai keluarga terdekat kaliann digsm, masalah diekoven sebisa mungkin selesaikan diekoven!!! dan buat pengajar muda selamat yaa jadi bagian dari ekoven, semoga betah yaa!!! kalian jangan sungkan untuk bertanya, becerita dll, kita keluargaa jadi masalah kamu adalah masalah kita dan itu berlaku buat semua yaaa....jangan biarkan kadep dan wakadepnya sendiri yaa!!!yang kalian ceritain kemarin pas famgath semoga dijadiin bahan eval untuk kelancaran kalian diperiode ini!!! semangatt kaliann, emang kokk selama satu periode lubangnya banyak, jatuhnya banyak, capeknya banyak, kalian bisa istirahat tapi jangan nyerah yaaa!!!! semangattt love you alll!! bai baii keluargaa, nanti ngumpul yaaaa!!!kalau ada sesuau bilang yaa!!!ada kita kokk!!!good luck semuaa!!!ekoven gacor!!!anjaiii" },
+             "aull": { gender: "cewe", emoji: "🤑🤑", name: "Dear Aull", msg: "haii aull!!!semangat yaaa!!! Satu periode lagi kokk, adek adek pengmudnya dibimbing yaa!!!semangatt jadi asalab juga yaa!!" },
+            
+
+
+
+        };
+        
+        let activeUser = "";
+
+        function openNote() {
+            const code = document.getElementById('passInput').value.toLowerCase();
+            const modal = document.getElementById('messageModal');
+            
+            if (users[code]) {
+                activeUser = code;
+                modal.className = `modal ${users[code].gender === "cewe" ? "theme-cewe" : "theme-cwo"}`;
+                document.getElementById('emojiBox').innerText = users[code].emoji;
+                document.getElementById('nameBox').innerText = users[code].name;
+                document.getElementById('messageContent').innerText = users[code].msg;
+                modal.style.display = "block";
+            } else {
+                alert("Kode salah, coba lagi ya! 😋");
+            }
+        }
+
+        function closeNote() {
+            document.getElementById('messageModal').style.display = "none";
+        }
+
+        function sendFeedback() {
+    const feedback = document.getElementById('feedbackInput').value;
+    const nomorWA = "6285102318809"; // Nomor kamu sudah dalam format internasional
+
+    if (feedback.trim() !== "") {
+        // Menyusun teks agar rapi: %0A adalah kode untuk baris baru (enter)
+        const textWA = `Halo! Ini balasan dari ${activeUser}:%0A%0A"${feedback}"`;
+        
+        // Membuka WhatsApp di tab baru
+        const urlWA = `https://wa.me/${nomorWA}?text=${textWA}`;
+        window.open(urlWA, '_blank');
+        
+        alert(`Pesanmu sedang dikirim ke WhatsApp aku ya, ${activeUser}! ✨`);
+        closeNote();
+    } else {
+        alert("Tulis sesuatu dulu ya sebelum kirim 😋");
+    }
+}
+    </script>
+</body>
+</html>
